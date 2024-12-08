@@ -1,0 +1,32 @@
+<!--  eslint-disable-next-line -->
+<dialog #dialog class="osa-dialog" (click)="dialogClick($event)">
+  <ng-template #defaultHeaderTemplate>
+    @if(dialogTitle()) {
+    <h1>{{ dialogTitle() }}</h1>
+    }
+    <!-- eslint-disable-next-line @angular-eslint/template/no-autofocus -->
+    <button autofocus (click)="close('cross')">Close</button>
+  </ng-template>
+  <div class="osa-dialog-header">
+    <ng-template
+      [ngTemplateOutlet]="headerTemplate() || defaultHeaderTemplate"
+      [ngTemplateOutletContext]="{ dialogElement: dialogElement() }"
+    />
+  </div>
+
+  @if(bodyTemplate()) {
+  <div class="osa-dialog-body">
+    <ng-template
+      [ngTemplateOutlet]="bodyTemplate()!"
+      [ngTemplateOutletContext]="{ dialogElement: dialogElement() }"
+    />
+  </div>
+  } @if(footerTemplate()) {
+  <div class="osa-dialog-footer">
+    <ng-template
+      [ngTemplateOutlet]="footerTemplate()!"
+      [ngTemplateOutletContext]="{ dialogElement: dialogElement() }"
+    />
+  </div>
+  }
+</dialog>

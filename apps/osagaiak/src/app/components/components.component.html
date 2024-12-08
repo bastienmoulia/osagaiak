@@ -1,0 +1,14 @@
+<button type="button" (click)="open()">Open dialog</button>
+<osa-dialog
+  #osaDialog1
+  [bodyTemplate]="osaDialogBodyTpl"
+  dialogTitle="Dialog Title"
+  (close)="close($event)"
+/>
+<ng-template #osaDialogBodyTpl let-dialogElement="dialogElement">
+  Hello world
+  <button (click)="dialogElement.close('2')">Close 2</button>
+</ng-template>
+<hr />
+<button type="button" (click)="open2()">Open dialog with backdrop</button>
+<osa-dialog #osaDialog2 [backdropClose]="true" (close)="close($event)" />
