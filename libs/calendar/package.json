@@ -1,8 +1,0 @@
-{
-  "name": "@osagaiak/calendar",
-  "version": "0.0.1",
-  "peerDependencies": {
-    "@angular/core": "^19.0.0"
-  },
-  "sideEffects": false
-}

@@ -16,7 +16,6 @@
     "baseUrl": ".",
     "paths": {
       "@osagaiak/accordion": ["libs/accordion/src/index.ts"],
-      "@osagaiak/calendar": ["libs/calendar/src/index.ts"],
       "@osagaiak/dialog": ["libs/dialog/src/index.ts"]
     }
   },
