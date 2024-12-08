@@ -4,13 +4,12 @@ import {
   effect,
   input,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import sdk from '@stackblitz/sdk';
 import { angularProject } from './angular-project';
 
 @Component({
   selector: 'app-stackblitz',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './stackblitz.component.html',
   styleUrl: './stackblitz.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
