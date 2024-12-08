@@ -1,4 +1,4 @@
-import { NgTemplateOutlet } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -6,13 +6,12 @@ import {
   computed,
   input,
   output,
-  TemplateRef,
   viewChild,
 } from '@angular/core';
 
 @Component({
   selector: 'osa-dialog',
-  imports: [NgTemplateOutlet],
+  imports: [NgClass],
   templateUrl: './dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -20,17 +19,20 @@ export class OsaDialogComponent implements AfterViewInit {
   dialog = viewChild<{ nativeElement: HTMLDialogElement }>('dialog');
   dialogElement = computed(() => this.dialog()?.nativeElement);
 
-  dialogTitle = input<string>();
   backdropClose = input<boolean>();
-  headerTemplate = input<TemplateRef<any>>();
-  bodyTemplate = input<TemplateRef<any>>();
-  footerTemplate = input<TemplateRef<any>>();
+  preventEsc = input<boolean>();
+  dialogClass = input<string>();
   // eslint-disable-next-line @angular-eslint/no-output-rename, @angular-eslint/no-output-on-prefix
-  onClose = output<any>({ alias: 'close' });
+  onClose = output<Event>({ alias: 'close' });
 
   ngAfterViewInit(): void {
     this.dialogElement()?.addEventListener('close', (e) => {
       this.onClose.emit(e);
+    });
+    this.dialogElement()?.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.preventEsc()) {
+        e.preventDefault();
+      }
     });
   }
 
@@ -38,13 +40,11 @@ export class OsaDialogComponent implements AfterViewInit {
     this.dialogElement()?.showModal();
   }
 
-  close(returnValue: string): void {
-    console.log('returnValue', returnValue);
+  close(returnValue?: string): void {
     this.dialogElement()?.close(returnValue);
   }
 
   dialogClick(e: MouseEvent): void {
-    console.log('dialogClick', e);
     if (this.backdropClose()) {
       const rect = this.dialogElement()?.getBoundingClientRect();
       if (rect) {

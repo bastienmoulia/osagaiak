@@ -1,24 +1,39 @@
 import { ChangeDetectionStrategy, Component, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OsaDialogComponent } from '@osagaiak/dialog';
+import { StackblitzComponent } from '../stackblitz/stackblitz.component';
 
 @Component({
   selector: 'app-components',
-  imports: [CommonModule, OsaDialogComponent],
+  imports: [CommonModule, OsaDialogComponent, StackblitzComponent],
   templateUrl: './components.component.html',
   styleUrl: './components.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ComponentsComponent {
-  private _osaDialog1 = viewChild.required<OsaDialogComponent>('osaDialog1');
-  private _osaDialog2 = viewChild.required<OsaDialogComponent>('osaDialog2');
+  private _osaDialogDemo =
+    viewChild.required<OsaDialogComponent>('osaDialogDemo');
+  private _osaDialogBlank =
+    viewChild.required<OsaDialogComponent>('osaDialogBlank');
+  private _osaDialogBackdrop =
+    viewChild.required<OsaDialogComponent>('osaDialogBackdrop');
+  private _osaDialogEscape =
+    viewChild.required<OsaDialogComponent>('osaDialogEscape');
 
-  open(): void {
-    this._osaDialog1().open();
+  openDemo(): void {
+    this._osaDialogDemo().open();
   }
 
-  open2(): void {
-    this._osaDialog2().open();
+  openBlank(): void {
+    this._osaDialogBlank().open();
+  }
+
+  openBackdrop(): void {
+    this._osaDialogBackdrop().open();
+  }
+
+  openEscape(): void {
+    this._osaDialogEscape().open();
   }
 
   close(e: any): void {
