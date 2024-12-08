@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, viewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { OsaDialogComponent } from '@osagaiak/dialog';
 import { StackblitzComponent } from '../stackblitz/stackblitz.component';
 
 @Component({
   selector: 'app-components',
-  imports: [CommonModule, OsaDialogComponent, StackblitzComponent],
+  imports: [OsaDialogComponent, StackblitzComponent],
   templateUrl: './components.component.html',
   styleUrl: './components.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

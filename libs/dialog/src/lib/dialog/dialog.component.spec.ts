@@ -20,4 +20,11 @@ describe('OsaDialogComponent', () => {
   it('should create', async () => {
     expect(component).toBeTruthy();
   });
+
+  it('should not be visible', async () => {
+    const dialogElement = fixture.nativeElement.querySelector(
+      'dialog',
+    ) as HTMLElement;
+    expect(dialogElement).not.toBeVisible();
+  });
 });
