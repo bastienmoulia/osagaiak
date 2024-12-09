@@ -1,21 +1,6 @@
-<button type="button" (click)="openDemo()">Open dialog</button>
-<osa-dialog #osaDialogDemo (close)="close($event)">
-  <h1>This is a dialog</h1>
-  <p>You can have a body</p>
-  <button (click)="osaDialogDemo.close()">Close</button>
-</osa-dialog>
-<hr />
-<button type="button" (click)="openBlank()">Open blank dialog</button>
-<osa-dialog #osaDialogBlank (close)="close($event)" />
-<hr />
-<button type="button" (click)="openBackdrop()">
-  Open dialog with backdrop
-</button>
-<osa-dialog #osaDialogBackdrop [backdropClose]="true" (close)="close($event)" />
-<hr />
-<button type="button" (click)="openEscape()">
-  Open dialog with prevent escape for closing
-</button>
-<osa-dialog #osaDialogEscape [preventEsc]="true" (close)="close($event)" />
-<div id="embed"></div>
-<app-stackblitz [folderName]="'stackblitz'"></app-stackblitz>
+<nav>
+  <a routerLink="./dialog" routerLinkActive="active">Dialog</a>
+</nav>
+<main>
+  <router-outlet />
+</main>
