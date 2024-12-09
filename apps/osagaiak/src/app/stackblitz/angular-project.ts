@@ -13,7 +13,7 @@ const PACKAGE_JSON = `{
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
-    "@osagaiak/dialog": "0.0.1",
+    "@osagaiak/dialog": "0.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -147,6 +147,7 @@ export const appConfig: ApplicationConfig = {
 const APP_COMPONENT_TS = `
 import { Component } from '@angular/core';
 import { OsaDialogComponent } from '@osagaiak/dialog';
+import { viewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -159,6 +160,10 @@ export class AppComponent {
 
   openDemo(): void {
     this._osaDialogDemo().open();
+  }
+
+  close(e: any): void {
+    console.log(e);
   }
 }
 `;
@@ -180,34 +185,6 @@ import { AppComponent } from './app/app.component';
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
 `;
-
-const TSCONFIG_JSON = `{
-  {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "outDir": "./dist/out-tsc",
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "bundler",
-    "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022"
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
-}
-}`;
 
 const files = {
   'package.json': PACKAGE_JSON,
@@ -231,7 +208,7 @@ const dependencies = {
   '@angular/platform-browser': '^19.0.0',
   '@angular/platform-browser-dynamic': '^19.0.0',
   '@angular/router': '^19.0.0',
-  '@osagaiak/dialog': '0.0.1',
+  '@osagaiak/dialog': '0.0.2',
   'core-js': '^3.15.1',
   rxjs: '~7.8.0',
   tslib: '^2.3.0',
@@ -239,8 +216,8 @@ const dependencies = {
 };
 
 export const angularProject: Project = {
-  title: 'Dynamically Generated Project',
-  description: 'Simple example using the WebContainers "node" template.',
+  title: 'Osagaiak',
+  description: '',
   template: 'angular-cli',
   files,
   dependencies, // uncomment to override EngineBlock dependencies

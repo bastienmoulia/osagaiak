@@ -12,7 +12,7 @@ describe('StackblitzComponent', () => {
 
     fixture = TestBed.createComponent(StackblitzComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('folderName', 'test');
+    fixture.componentRef.setInput('files', []);
     fixture.detectChanges();
   });
 

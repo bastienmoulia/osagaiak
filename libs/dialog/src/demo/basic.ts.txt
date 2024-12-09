@@ -1,0 +1,24 @@
+import { Component } from '@angular/core';
+import { OsaDialogComponent } from '@osagaiak/dialog';
+import { viewChild } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  imports: [OsaDialogComponent],
+  template: `
+    <button type="button" (click)="open()">Open dialog</button>
+    <osa-dialog #osaDialogBasic>
+      <h1>This is a dialog</h1>
+      <p>You can have a body</p>
+      <button (click)="osaDialogBasic.close()">Close</button>
+    </osa-dialog>
+  `,
+})
+export class AppComponent {
+  private _osaDialog =
+    viewChild.required<OsaDialogComponent>(OsaDialogComponent);
+
+  open(): void {
+    this._osaDialog().open();
+  }
+}
