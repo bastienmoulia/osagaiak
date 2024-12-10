@@ -22,12 +22,7 @@
           }
         ],
         "styles": ["apps/osagaiak/src/styles.css"],
-        "scripts": [],
-        "server": "apps/osagaiak/src/main.server.ts",
-        "ssr": {
-          "entry": "apps/osagaiak/src/server.ts"
-        },
-        "outputMode": "server"
+        "scripts": []
       },
       "configurations": {
         "production": {
