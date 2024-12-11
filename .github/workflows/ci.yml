@@ -10,6 +10,9 @@ permissions:
   actions: read
   contents: read
 
+env:
+  NX_VERBOSE_LOGGING: true
+
 jobs:
   main:
     runs-on: ubuntu-latest
