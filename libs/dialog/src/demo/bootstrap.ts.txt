@@ -1,0 +1,38 @@
+import { Component } from '@angular/core';
+import { OsaDialogComponent } from '@osagaiak/dialog';
+import { viewChild } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  imports: [OsaDialogComponent],
+  template: `
+    <button type="button" class="btn btn-primary m-3" (click)="open()">Open dialog</button>
+    <osa-dialog #osaDialogBasic>
+      <div class="modal d-block">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" (click)="osaDialogBasic.close()" class="btn-close" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" (click)="osaDialogBasic.close()" class="btn btn-secondary">Close</button>
+              <button type="button" (click)="osaDialogBasic.close()" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </osa-dialog>
+  `,
+})
+export class AppComponent {
+  private _osaDialog =
+    viewChild.required<OsaDialogComponent>(OsaDialogComponent);
+
+  open(): void {
+    this._osaDialog().open();
+  }
+}
